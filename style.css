@@ -1,0 +1,40 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  /* background-color: #2196F3; */
+  padding: 20px;
+  text-align: center;
+}
+.grid-item {
+  background-color: rgb(124, 158, 115);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  height: 300px;
+  width: 200px;
+  font-size: 30px;
+  text-align: center;
+  margin: 20px;
+}
+img {
+  border-radius: 50%;
+  margin: 30px;
+  vertical-align: middle;
+}
+.name {
+  margin-top: 40px;
+}
+
+.nav {
+  position: relative;
+  margin: auto;
+  text-align: center;
+}
+
+.navkeys{
+  font-size: 1.8em;
+  height: 50px;
+  text-align: center;
+  width: 50px;
+  vertical-align: middle;
+  display: inline-block;
+  background-color: gray;
+}

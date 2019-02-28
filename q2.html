@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <div class="grid-container" id="container">
+    <div class="grid-item">
+      <div class="avatar">
+        <img src="https://s3.amazonaws.com/uifaces/faces/twitter/russoedu/128.jpg"/>
+      </div>
+      <div class="name">
+        FULL NAME
+      </div>
+    </div>
+  </div>
+  <div class="nav">
+    <button class="navkeys" onclick="prevPage()"> < </button>
+    <div class="navkeys" id="page">
+      1
+    </div>
+    <button class="navkeys" onclick="nextPage()"> > </button>
+  </div>
+</body>
+<script type="text/javascript">
+  var page = 1;
+
+  const userAction = async (page) => {
+    if(page == 0 || NaN){
+      var page = 1;
+    }
+    var page = page;
+    item_html = "";
+    var url = "https://reqres.in/api/users?page="+page+"&per_page=3";
+    const response = await fetch(url);
+    const myJson = await response.json(); //extract JSON from the http response
+
+    myJson.data.forEach(function(e) {
+      item_html = item_html + "<div class=\"grid-item\"><div class=\"avatar\"><img src="+ e.avatar+" /></div><div class=\"name\">"+e.first_name+" "+e.last_name+"</div></div>"
+    });
+
+    document.getElementById('container').innerHTML = item_html;
+    document.getElementById('page').innerHTML = page;
+  }
+
+  userAction(page);
+
+
+  function nextPage(){
+    var page = parseInt(document.getElementById('page').innerHTML);
+    userAction(page+1);
+    console.log(page);
+  }
+
+  function prevPage(){
+    var page = parseInt(document.getElementById('page').innerHTML);
+    userAction(page-1);
+    console.log(page);
+  }
+
+</script>
+</html>
